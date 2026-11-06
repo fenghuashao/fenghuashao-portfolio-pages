@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>工程案例 · fenghuashao</title><meta name="description" content="问题、约束、方案与权衡、被否方案、验证方式、结果与局限——六段式工程案例研究。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="工程案例 · fenghuashao"><meta property="og:description" content="问题、约束、方案与权衡、被否方案、验证方式、结果与局限——六段式工程案例研究。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/" aria-current="page">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <section class="hero" style="padding:44px 0 8px"> <p class="kicker">Engineering Case Studies</p> <h1 class="mega" style="font-size:34px">工程案例</h1> <p class="lede">
+每个案例回答六个问题：问题、约束、方案与选型、被否掉的替代方案、验证方式、结果与局限。不堆日志，不放没有证据的数字。当前 2 篇完整可读，其余在素材整理中。
+</p> </section> <div class="case-strip" style="grid-template-columns:1fr"> <a class="case-card" href="/fenghuashao-portfolio-pages/engineering/delegation-lifecycle/"><div class="k">AI Agent 任务委托系统</div><h3>确定性生命周期：AI 委托不失控</h3><p>agent 只执行，控制平面不编造决策：验证证据与语义评审分离。</p></a><a class="case-card" href="/fenghuashao-portfolio-pages/engineering/render-parity/"><div class="k">象棋视频工作室</div><h3>预览与导出一致性：fail-closed 的构件来源</h3><p>让&quot;所见&quot;与&quot;所得&quot;可证明：构建来源身份 + 运行时 parity + 帧级比对。</p></a><div class="case-card pending" aria-label="素材整理中"><div class="k">独立工程经历 · 素材整理中</div><h3>MySQL 大规模分区表升级与故障分析</h3><p>企业工程经历。素材整理中——等待本人脱敏材料，页面上不会出现任何未经验证的数字。</p></div> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer>  </body> </html>

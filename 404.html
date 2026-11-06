@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>404 · fenghuashao</title><meta name="description" content="页面不存在。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/404/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="404 · fenghuashao"><meta property="og:description" content="页面不存在。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/404/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <section class="hero" style="padding:80px 0 40px;text-align:center"> <p class="kicker">404</p> <h1 class="mega" style="font-size:34px">页面不存在</h1> <p class="lede" style="margin-inline:auto">这个地址没有对应的内容。<a href="/fenghuashao-portfolio-pages/">回首页</a> 或 <a href="/fenghuashao-portfolio-pages/projects/">浏览作品</a>。</p> </section>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer>  </body> </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>确定性生命周期：AI 委托不失控 · 工程案例 · fenghuashao</title><meta name="description" content="agent 只执行，控制平面不编造决策：验证证据与语义评审分离。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/delegation-lifecycle/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="确定性生命周期：AI 委托不失控 · 工程案例 · fenghuashao"><meta property="og:description" content="agent 只执行，控制平面不编造决策：验证证据与语义评审分离。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/delegation-lifecycle/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/" aria-current="page">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <p class="crumb"><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a> / 确定性生命周期：AI 委托不失控</p> <section class="detail-head"> <div class="badge-stack"> <span class="badge beta">Case Study</span> <a class="badge released" href="/fenghuashao-portfolio-pages/projects/agent-delegation/" style="text-decoration:none">
+关联作品：AI Agent 任务委托系统 →
+</a> </div> <h1>确定性生命周期：AI 委托不失控</h1> <p class="sum">agent 只执行，控制平面不编造决策：验证证据与语义评审分离。</p> </section> <div class="detail-cols"> <div> <article class="case-prose"> <h2 id="背景与问题">背景与问题</h2>
+<p>把实现任务交给 AI agent 时最大的风险不是”写不出来”，而是”状态不可控”：任务到底进行到哪一步？验证是 agent 自己说的还是机器确认的？“完成了”是谁的定义？如果委托方进程重启，被委托的任务是死是活？</p>
+<h2 id="约束">约束</h2>
+<ul>
+<li>agent 输出不可信为验证结论：agent 可能宣称完成而实际未通过验证</li>
+<li>委托方与被委托方进程必须解耦：委托方崩溃不能带走任务</li>
+<li>生命周期每个状态必须可复现、可审计，不允许”隐式成功”</li>
+<li>运行环境零第三方 Python 依赖（纯标准库），保证在任何机器上可跑</li>
+</ul>
+<h2 id="方案与权衡">方案与权衡</h2>
+<p>task-delegation 定义四阶段生命周期：<strong>prepare → start → verify → review</strong>。关键设计是两条分离的通过线：</p>
+<ul>
+<li><strong>确定性验证（verify）</strong>：测试、命令、退出码——机器说了算；</li>
+<li><strong>语义评审（review）</strong>：需求是否真的被满足——人显式 accept，agent 无权代行。</li>
+</ul>
+<p>任务进入 accepted 必须同时满足两者。pi_delegate 在进程层补齐：start 返回句柄，worker 独立进程续跑，支持查询 / 取消 / 续跑 / 取回证据。</p>
+<p>被否掉的替代方案：</p>
+<ul>
+<li><strong>让 agent 自报完成状态</strong>——等于让被执行者给自己的作业打分；</li>
+<li><strong>单进程内嵌 agent</strong>——委托方崩溃即任务丢失，无法审计。</li>
+</ul>
+<h2 id="验证">验证</h2>
+<p>测试规程覆盖 T0–T40；验证记录含两次 macOS 环境复跑（2026-10-02、2026-10-10）与 Gate 3B 报告。生命周期每个状态迁移在规程中有对应用例。</p>
+<h2 id="结果">结果</h2>
+<p>两个工具构成日常可用的委托工作流：确定性部分全部由机器判定，人只在语义层出场。委托任务规模的量化数字<strong>未度量</strong>，不提供编造值。</p>
+<h2 id="局限与后续">局限与后续</h2>
+<p>无图形界面，上手成本在 CLI 一侧；语义评审目前依赖人读证据，尚无结构化的评审辅助；验证记录产生于 macOS 环境，其他平台复跑情况未记录。</p> </article> <div class="evidence-box"><b class="cap">验证证据 · EVIDENCE</b><div class="ev-chips"><span class="ev-chip ok">测试规程 T0–T40 ✔</span><span class="ev-chip ok">2026-10-10 macOS 复跑记录 ✔</span><span class="ev-chip ok">2026-10-02 macOS 复跑记录 ✔</span><span class="ev-chip ok">Gate 3B 验证报告 ✔</span></div></div><p class="verify-note">
+内容核对时间：2026/10/24 · 证据来源：仓库验证记录与测试规程文档（README 自述；本站构建时未复跑） </p> <p style="margin-top:28px"><a class="btn ghost" href="/fenghuashao-portfolio-pages/engineering/">← 返回工程案例</a></p> </div> <aside class="meta-panel"> <div class="meta-box"> <b>关联作品</b> <ul> <li><a href="/fenghuashao-portfolio-pages/projects/agent-delegation/">AI Agent 任务委托系统</a></li> <li>状态：Beta · 可用工具</li> </ul> </div> <div class="meta-box"> <b>案例档案</b> <ul> <li>领域：AI 工程 / 进程管理</li> <li>叙事结构：问题 → 约束 → 方案 → 验证 → 结果 → 局限</li> </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"工程案例","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/"},{"@type":"ListItem","position":2,"name":"确定性生命周期：AI 委托不失控","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/delegation-lifecycle/"}]}</script> </body> </html>

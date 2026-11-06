@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>象棋视频工作室 · fenghuashao</title><meta name="description" content="把棋谱、注释与视频时间轴组织在同一工作台中，让象棋内容创作者逐手整理棋局、调整画面并预览讲解。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="象棋视频工作室 · fenghuashao"><meta property="og:description" content="把棋谱、注释与视频时间轴组织在同一工作台中，让象棋内容创作者逐手整理棋局、调整画面并预览讲解。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/" aria-current="page">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <p class="crumb"><a href="/fenghuashao-portfolio-pages/projects/">作品</a> / 象棋视频工作室</p> <section class="detail-hero real-cover"> <a href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.png" target="_blank" rel="noopener noreferrer" aria-label="象棋视频工作室封面，查看完整原图（新窗口）"> <img src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.webp" alt="Xiangqi Video Studio 的真实视频预览界面，含棋盘、着法、字幕与时间轴" fetchpriority="high"> <span class="cover-link-label">查看封面原图 ↗</span> </a>  </section> <section class="detail-head"> <div class="badge-stack"> <div class="badge-stack"> <span class="badge prototype">Prototype · 开发中 · 浏览器编辑与预览</span> <span class="badge private">Private</span> </div> <span class="chip">2026</span> </div> <h1>象棋视频工作室<span style="color:var(--ink-3);font-weight:600"> · Xiangqi Video Studio</span></h1> <p class="sum">把棋谱、注释与视频时间轴组织在同一工作台中，让象棋内容创作者逐手整理棋局、调整画面并预览讲解。</p> <p class="media-note">自建 9 手演示棋谱；以下短片是浏览器操作录屏，不是原生导出的棋局成片。 <a href="#demo">观看短片与截图 ↓</a></p> </section> <div class="detail-cols"> <div> <section id="demo" class="project-demo" aria-labelledby="demo-heading"> <div class="section-head"><h2 id="demo-heading">实际操作与界面</h2></div> <section aria-label="界面与演示"><div class="gallery"><figure class="gallery-video"><video controls playsinline preload="none" poster="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.webp" width="1600" height="1000" aria-label="Xiangqi Video Studio 无声实际操作短片" aria-describedby="media-caption-0"><source src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/workflow.mp4" type="video/mp4">
+浏览器不支持内嵌视频，请使用下方的 MP4 链接。
+</video><figcaption id="media-caption-0"><span>30.8 秒 · 无声操作录屏：逐手导航 → 棋盘外观切换 → 视频预览与时间轴定位。这是浏览器编辑与预览，不是原生导出成片。</span><a href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/workflow.mp4" target="_blank" rel="noopener noreferrer">单独打开短片 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/01-editor.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 棋局工作台，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/01-editor.webp" alt="Xiangqi Video Studio · 棋局工作台" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-1"><span>棋局工作台：自建 9 手棋谱，展示逐手导航与注释。</span><a href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/01-editor.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 棋局工作台：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/02-board-appearance.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 棋盘外观，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/02-board-appearance.webp" alt="Xiangqi Video Studio · 棋盘外观" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-2"><span>棋盘外观：真实界面中切换深色棋盘。</span><a href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/02-board-appearance.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 棋盘外观：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 视频预览，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.webp" alt="Xiangqi Video Studio · 视频预览" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-3"><span>视频预览：实际 Remotion Player，显示着法、字幕和时间轴。</span><a href="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.png" target="_blank" rel="noopener noreferrer" aria-label="Xiangqi Video Studio · 视频预览：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure></div></section> </section> <div class="prose"> <h2 id="为谁解决什么问题">为谁解决什么问题</h2>
+<p>面向象棋爱好者与讲解内容创作者。整理一段棋局讲解，需要在棋谱、局面、注释与画面节奏之间反复切换。这个工作台将它们放在一起，让创作者围绕每一步棋组织内容，并直接观察视频预览。</p>
+<h2 id="核心使用流程">核心使用流程</h2>
+<ol>
+<li>在棋局工作台载入棋谱，逐手查看局面与注释。</li>
+<li>调整棋盘外观，在视频视图查看着法信息与字幕。</li>
+<li>播放或定位时间轴，检查棋局内容在画面中的呈现。</li>
+</ol>
+<p>本页使用自建的 9 手示例棋局，不对应历史对局。录屏覆盖以上编辑和预览流程；原生导出另有独立验收要求。</p>
+<h2 id="我的贡献与技术决策">我的贡献与技术决策</h2>
+<p>我负责产品、工作台架构、实现与验证流程。重点是把结构化棋谱与视频表达接起来，让棋盘、注释和动画保持联系。</p>
+<ul>
+<li><strong>React + TypeScript</strong> 组织编辑器交互与棋谱状态，让导航、注释与时间轴有明确的数据联系。</li>
+<li><strong>Remotion</strong> 用组件表达棋局画面，播放器与渲染路径复用画面逻辑；预览与导出的结果仍需要单独比较和验证。</li>
+<li><strong>Tauri 2 + Rust</strong> 承担原生桌面能力，渲染 worker 处理导出。浏览器预览可用，不自动证明原生桥与导出路径可用。</li>
+</ul>
+<p>相关的预览 / 导出一致性工程思路见下方案例；案例保留自身的证据日期与验证范围。</p>
+<h2 id="当前状态与验证范围">当前状态与验证范围</h2>
+<p>项目处于开发中，未完成正式发布验收。素材来自固定源码版本 <code>9811cd7</code>，采集于 2026-11-03。</p>
+<p><strong>本次已观察</strong>：浏览器逐手导航、注释显示、棋盘外观切换、真实 Remotion Player 播放及时间轴定位。</p>
+<p><strong>未覆盖</strong>：原生桌面保存、MP4 导出、移动端交付与完整发布验收。该素材版本仍有非 Windows 导出桥不可用的已知问题，不能据此宣称 macOS 导出已修复。源码仓库保持私有。</p> </div>   <div class="section-head" style="margin-top:40px"><h2>关联工程案例</h2></div> <div class="case-embed"> <div class="k">工程解读 · ENGINEERING</div> <h3>预览与导出一致性：fail-closed 的构件来源</h3> <p>让&quot;所见&quot;与&quot;所得&quot;可证明：构建来源身份 + 运行时 parity + 帧级比对。</p> <a class="btn ghost" style="padding:8px 16px;font-size:14px" href="/fenghuashao-portfolio-pages/engineering/render-parity/">阅读完整案例 →</a> </div> </div> <aside class="meta-panel"> <div class="meta-box"> <b>技术栈</b> <ul><li>React</li><li>TypeScript</li><li>Remotion</li><li>Tauri 2</li><li>Rust</li><li>Pikafish</li></ul> </div> <div class="meta-box"> <b>我的角色</b> <ul><li>产品与工作台设计</li><li>棋谱 / 预览架构与实现</li><li>验证流程设计</li></ul> </div> <div class="meta-box"> <b>状态</b> <ul> <li>Prototype · 开发中 · 浏览器编辑与预览</li> <li>内容核对 2026/11/03</li> </ul> </div> <div class="meta-box"> <b>入口</b> <ul> <li>源码：私有仓库</li> <li><a href="#demo">本页操作短片与截图 ↓</a></li>  </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"作品","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/"},{"@type":"ListItem","position":2,"name":"象棋视频工作室","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/"}]}</script> </body> </html>

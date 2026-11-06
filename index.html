@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>fenghuashao · 软件作品集</title><meta name="description" content="fenghuashao 的软件作品集：Xiangqi Video Studio 象棋创作工作台、Subwise 订阅管理与 EasyCV 浏览器扩展，以真实截图、操作短片和工程案例展示实现。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="fenghuashao · 软件作品集"><meta property="og:description" content="fenghuashao 的软件作品集：Xiangqi Video Studio 象棋创作工作台、Subwise 订阅管理与 EasyCV 浏览器扩展，以真实截图、操作短片和工程案例展示实现。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/" aria-current="page">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <section class="hero"> <div class="hero-grid"> <div> <p class="kicker">Software Portfolio</p> <h1 class="mega">作品说话，<br>工程案例证明能力。</h1> <p class="lede">
+我是 fenghuashao，全栈工程师与独立开发者。这里展示我做的象棋创作工作台、订阅管理工具和浏览器扩展：看实际界面与操作，再读背后的工程决策。
+</p> <div class="cta-row"> <a class="btn primary" href="/fenghuashao-portfolio-pages/projects/">浏览作品</a> <a class="btn ghost" href="/fenghuashao-portfolio-pages/engineering/">读工程案例</a> </div> </div> <a class="hero-card" href="/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/" aria-label="旗舰作品：象棋视频工作室"> <div class="cover real-cover"> <img src="/fenghuashao-portfolio-pages/media/projects/xiangqi-video-studio/03-video-preview.webp" alt="Xiangqi Video Studio 的真实视频预览界面，含棋盘、着法、字幕与时间轴" fetchpriority="high">  </div>  <div class="body"> <div class="badge-stack"> <span class="badge prototype">Prototype · 开发中 · 浏览器编辑与预览</span> <span class="badge private">Private</span> </div> <h2>象棋视频工作室<span style="color:var(--ink-3);font-weight:600"> · Xiangqi Video Studio</span></h2> <p>把棋谱、注释与视频时间轴组织在同一工作台中，让象棋内容创作者逐手整理棋局、调整画面并预览讲解。</p> <div class="chips"> <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Remotion</span><span class="chip">Tauri 2</span><span class="chip">Rust</span> </div> </div> </a> </div> </section> <div class="section-head"> <h2>精选作品</h2> <a class="more" href="/fenghuashao-portfolio-pages/projects/">全部作品 →</a> </div> <div class="grid featured-grid"> <a class="card" href="/fenghuashao-portfolio-pages/projects/subwise/"> <div class="cover real-cover"> <img src="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.webp" alt="Subwise 真实订阅总览，页面中的价格与订阅均为示例数据" loading="lazy">  </div>  <div class="body"> <div class="badge-stack"> <span class="badge snapshot">版本快照 · v1.1.0 · 本地 Web 演示</span>  </div> <h3>Subwise</h3> <p>集中记录订阅套餐、费用与续费日期，用总览、日历和支出分析看清订阅安排；本页使用示例数据。</p> <div class="chips"> <span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">Node.js</span><span class="chip">localStorage</span> </div> </div> </a><a class="card" href="/fenghuashao-portfolio-pages/projects/easycv/"> <div class="cover real-cover"> <img src="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.webp" alt="EasyCV 在自建限制测试页中的实际复制粘贴成功结果，并非扩展自身界面" loading="lazy">  </div> <p class="cover-caption">自建测试页 · 复制粘贴实测结果</p> <div class="body"> <div class="badge-stack"> <span class="badge snapshot">版本快照 · v1.1.1 · 自建页面实测</span>  </div> <h3>EasyCV</h3> <p>针对网页的文字选择、复制与粘贴限制提供扩展工具，通过设置与站点排除管理作用范围；展示同一测试页的前后结果。</p> <div class="chips"> <span class="chip">JavaScript</span><span class="chip">Chrome Extension</span><span class="chip">Manifest V3</span> </div> </div> </a> </div> <div class="section-head"> <h2>工程案例</h2> <a class="more" href="/fenghuashao-portfolio-pages/engineering/">全部案例 →</a> </div> <div class="case-strip"> <a class="case-card" href="/fenghuashao-portfolio-pages/engineering/delegation-lifecycle/"><div class="k">AI Agent 任务委托系统</div><h3>确定性生命周期：AI 委托不失控</h3><p>agent 只执行，控制平面不编造决策：验证证据与语义评审分离。</p></a><a class="case-card" href="/fenghuashao-portfolio-pages/engineering/render-parity/"><div class="k">象棋视频工作室</div><h3>预览与导出一致性：fail-closed 的构件来源</h3><p>让&quot;所见&quot;与&quot;所得&quot;可证明：构建来源身份 + 运行时 parity + 帧级比对。</p></a> </div> <div class="section-head"><h2>技术方向</h2></div> <div class="skills-band"> <div class="skill-tile"><b>后端</b><span>Java · Spring Boot · MySQL · Python</span></div> <div class="skill-tile"><b>前端</b><span>TypeScript · Vue · React · Vite</span></div> <div class="skill-tile"><b>跨平台</b><span>Tauri 2 · Electron · Swift · Remotion</span></div> <div class="skill-tile"><b>AI 工程</b><span>Agent 委托 · Codex / Claude Code / pi</span></div> </div> <p style="color:var(--ink-3);font-size:13px;margin-top:34px">
+工作方式：人定标准、agent 执行、人验收，贯穿全部作品 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+<a href="/fenghuashao-portfolio-pages/about/">关于我</a> · 精选素材采集于 2026-11-03，均使用演示数据
+</p>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer>  </body> </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>关于 · fenghuashao</title><meta name="description" content="全栈工程师与独立开发者：Java/Spring Boot 起家，现在以 TypeScript、跨平台技术与 AI Agent 工作流持续交付独立软件。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/about/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="关于 · fenghuashao"><meta property="og:description" content="全栈工程师与独立开发者：Java/Spring Boot 起家，现在以 TypeScript、跨平台技术与 AI Agent 工作流持续交付独立软件。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/about/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/" aria-current="page">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <section class="hero" style="padding:44px 0 8px"> <p class="kicker">About</p> <h1 class="mega" style="font-size:34px">关于我</h1> </section> <div class="detail-cols"> <div class="prose"> <h2>技术背景</h2> <p>
+全栈工程师、独立开发者。以 Java / Spring Boot / MySQL 后端起家，前端长期使用 TypeScript 与 Vue / React；
+        近年的重心是跨平台客户端（Tauri 2 / Electron / macOS 原生）与视频渲染引擎（Remotion），以及把 AI Agent
+        当作工程组件来设计系统——人定标准、agent 执行、人验收。
+</p> <p>
+我维护着一批独立完成的产品与工具：从象棋视频工作室这样的跨平台应用，到 AI Agent 任务委托系统、
+        开源 Web 工具，以及真实业务场景的婚礼请柬全栈交付。每个作品在仓库里都有对应的需求、验证与状态记录。
+</p> <h2>核心技能</h2> <div class="skills-band" style="grid-template-columns:repeat(2,1fr);margin-top:10px"> <div class="skill-tile"><b>后端</b><span>Java · Spring Boot · MySQL · Python</span></div> <div class="skill-tile"><b>前端</b><span>TypeScript · Vue · React · Vite</span></div> <div class="skill-tile"><b>跨平台客户端</b><span>Tauri 2 · Electron · Swift/macOS · Remotion</span></div> <div class="skill-tile"><b>AI 工程</b><span>Agent 委托系统 · Codex / Claude Code / pi · LLM 应用</span></div> </div> <h2>关注领域</h2> <ul> <li>可验证的软件交付：确定性生命周期、构建来源身份、预览/导出一致性</li> <li>AI Agent 作为工程组件：验证证据与语义评审分离</li> <li>受限环境下的全栈交付：共享主机、离线优先、纯标准库</li> </ul> <h2>联系</h2> <ul> <li><a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub · @fenghuashao ↗</a></li> </ul> <p style="color:var(--ink-3);font-size:13px">其他联系渠道（邮箱等）待补充：本页不提供未经验证的联系信息。</p> </div> <aside class="meta-panel"> <div class="meta-box"> <b>本站定位</b> <p>作品为主体，工程案例证明能力。</p> </div> <div class="meta-box"> <b>内容纪律</b> <ul> <li>状态与仓库可见性如实标注</li> <li>缺图显式占位，不伪装截图</li> <li>无证据的数字一律不出现</li> </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer>  </body> </html>

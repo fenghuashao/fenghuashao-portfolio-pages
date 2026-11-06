@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>预览与导出一致性：fail-closed 的构件来源 · 工程案例 · fenghuashao</title><meta name="description" content="让&#34;所见&#34;与&#34;所得&#34;可证明：构建来源身份 + 运行时 parity + 帧级比对。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/render-parity/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="预览与导出一致性：fail-closed 的构件来源 · 工程案例 · fenghuashao"><meta property="og:description" content="让&#34;所见&#34;与&#34;所得&#34;可证明：构建来源身份 + 运行时 parity + 帧级比对。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/render-parity/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/">作品</a><a href="/fenghuashao-portfolio-pages/engineering/" aria-current="page">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <p class="crumb"><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a> / 预览与导出一致性：fail-closed 的构件来源</p> <section class="detail-head"> <div class="badge-stack"> <span class="badge beta">Case Study</span> <a class="badge released" href="/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/" style="text-decoration:none">
+关联作品：象棋视频工作室 →
+</a> </div> <h1>预览与导出一致性：fail-closed 的构件来源</h1> <p class="sum">让&quot;所见&quot;与&quot;所得&quot;可证明：构建来源身份 + 运行时 parity + 帧级比对。</p> </section> <div class="detail-cols"> <div> <article class="case-prose"> <h2 id="背景与问题">背景与问题</h2>
+<p>“预览里明明是对的，导出的 MP4 不一样。“——这是视频工具的信任杀手。象棋视频工作室里，预览跑在系统 Chrome，导出跑在随包 headless-shell：两个运行时不一致，“可重复渲染”就无从谈起。更进一步：如果发布构件本身来自一台状态不明的工作机，“导出一致”也无从证明。</p>
+<h2 id="约束">约束</h2>
+<ul>
+<li>导出 worker 随应用分发，必须可离线校验来源与完整性</li>
+<li>不能假设用户机器 PATH 上有 ffmpeg</li>
+<li>校验必须能进 CI 自动执行，不能依赖人工抽查</li>
+</ul>
+<h2 id="方案与权衡">方案与权衡</h2>
+<p>采用三层机制收口：</p>
+<ol>
+<li><strong>构建来源身份（provenance）</strong>：打包前解析 git commit / tree / dirty 状态，dirty 工作树默认拒绝产出发布构件；强行放行会标记 releaseEligible=false，运行期 preflight 拒绝。</li>
+<li><strong>运行时 parity</strong>：verify:parity 比较系统 Chrome 与随包 headless-shell 的渲染一致性。</li>
+<li><strong>帧级比对</strong>：verify:frame 对同一 Composition 的参考帧与导出 MP4 帧做像素级比较。</li>
+</ol>
+<p>被否掉的替代方案：</p>
+<ul>
+<li><strong>导出后人工抽查</strong>——不可重复，进不了 CI；</li>
+<li><strong>只信任单一运行时（全用系统浏览器导出）</strong>——用户环境不可控，发布件不可复现。</li>
+</ul>
+<h2 id="验证">验证</h2>
+<p>三条验证命令全部纳入 pnpm check 与 CI（证据见侧栏芯片）。验证机制覆盖”构件从哪来”（provenance）、“两个运行时是否一致”（parity）、“输出帧是否等于参考帧”（frame）三层。</p>
+<h2 id="结果">结果</h2>
+<p>机制全部就绪并纳入验证命令集与 CI。渲染一致率的量化数字<strong>未度量</strong>，本文不提供任何编造值。</p>
+<h2 id="局限与后续">局限与后续</h2>
+<p>参考帧集需要持续维护；Android / iOS 渲染路径尚未纳入 parity 范围——移动端发布前必须补上。</p> </article> <div class="evidence-box"><b class="cap">验证证据 · EVIDENCE</b><div class="ev-chips"><span class="ev-chip ok">pnpm verify:provenance ✔</span><span class="ev-chip ok">pnpm verify:parity ✔</span><span class="ev-chip ok">pnpm verify:frame ✔</span><span class="ev-chip ok">纳入 pnpm check 与 CI ✔</span></div></div><p class="verify-note">
+内容核对时间：2026/10/24 · 证据来源：仓库 README&quot;构件来源与打包（BC-1）&quot;章节 </p> <p style="margin-top:28px"><a class="btn ghost" href="/fenghuashao-portfolio-pages/engineering/">← 返回工程案例</a></p> </div> <aside class="meta-panel"> <div class="meta-box"> <b>关联作品</b> <ul> <li><a href="/fenghuashao-portfolio-pages/projects/xiangqi-video-studio/">象棋视频工作室</a></li> <li>状态：Prototype · 开发中 · 浏览器编辑与预览</li> </ul> </div> <div class="meta-box"> <b>案例档案</b> <ul> <li>领域：桌面应用 / 视频渲染</li> <li>叙事结构：问题 → 约束 → 方案 → 验证 → 结果 → 局限</li> </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"工程案例","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/"},{"@type":"ListItem","position":2,"name":"预览与导出一致性：fail-closed 的构件来源","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/engineering/render-parity/"}]}</script> </body> </html>

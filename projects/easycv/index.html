@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>EasyCV · fenghuashao</title><meta name="description" content="针对网页的文字选择、复制与粘贴限制提供扩展工具，通过设置与站点排除管理作用范围；展示同一测试页的前后结果。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/easycv/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="EasyCV · fenghuashao"><meta property="og:description" content="针对网页的文字选择、复制与粘贴限制提供扩展工具，通过设置与站点排除管理作用范围；展示同一测试页的前后结果。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/easycv/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/" aria-current="page">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <p class="crumb"><a href="/fenghuashao-portfolio-pages/projects/">作品</a> / EasyCV</p> <section class="detail-hero real-cover"> <a href="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV封面，查看完整原图（新窗口）"> <img src="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.webp" alt="EasyCV 在自建限制测试页中的实际复制粘贴成功结果，并非扩展自身界面" fetchpriority="high"> <span class="cover-link-label">自建测试页 · 复制粘贴实测结果 · 查看封面原图 ↗</span> </a>  </section> <section class="detail-head"> <div class="badge-stack"> <div class="badge-stack"> <span class="badge snapshot">版本快照 · v1.1.1 · 自建页面实测</span>  </div> <span class="chip">2026</span> </div> <h1>EasyCV<span style="color:var(--ink-3);font-weight:600"> · 网页复制粘贴助手</span></h1> <p class="sum">针对网页的文字选择、复制与粘贴限制提供扩展工具，通过设置与站点排除管理作用范围；展示同一测试页的前后结果。</p> <p class="media-note">固定版本 1.1.1；复制粘贴对照图来自自建功能演示页面，不是扩展自身界面，也不代表所有网站兼容。 <a href="#demo">观看短片与截图 ↓</a></p> </section> <div class="detail-cols"> <div> <section id="demo" class="project-demo" aria-labelledby="demo-heading"> <div class="section-head"><h2 id="demo-heading">实际操作与界面</h2></div> <section aria-label="界面与演示"><div class="gallery"><figure class="gallery-video"><video controls playsinline preload="none" poster="/fenghuashao-portfolio-pages/media/projects/easycv/01-restricted-page.webp" width="1440" height="1000" aria-label="EasyCV 无声实际操作短片" aria-describedby="media-caption-0"><source src="/fenghuashao-portfolio-pages/media/projects/easycv/workflow.mp4" type="video/mp4">
+浏览器不支持内嵌视频，请使用下方的 MP4 链接。
+</video><figcaption id="media-caption-0"><span>24.6 秒 · 无声对照录屏：前 8.67 秒未加载扩展，结果为空；之后加载真实扩展，完成拖选、复制与粘贴。两个隔离会话顺序拼接；画面是自建功能演示页面，不是扩展自身界面。</span><a href="/fenghuashao-portfolio-pages/media/projects/easycv/workflow.mp4" target="_blank" rel="noopener noreferrer">单独打开短片 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/easycv/01-restricted-page.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 使用前 / 自建测试页，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/easycv/01-restricted-page.webp" alt="EasyCV · 使用前 / 自建测试页" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-1"><span>使用前 / 自建测试页：未加载扩展：拖选与复制粘贴后，结果仍为空。</span><a href="/fenghuashao-portfolio-pages/media/projects/easycv/01-restricted-page.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 使用前 / 自建测试页：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 使用后 / 同一自建测试页，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.webp" alt="EasyCV · 使用后 / 同一自建测试页" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-2"><span>使用后 / 同一自建测试页：加载真实扩展后，两句文字成功复制粘贴。此图不是扩展自身界面。</span><a href="/fenghuashao-portfolio-pages/media/projects/easycv/02-copy-paste-success.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 使用后 / 同一自建测试页：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/easycv/04-settings.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 补充 / 扩展常规设置，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/easycv/04-settings.webp" alt="EasyCV · 补充 / 扩展常规设置" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-3"><span>补充 / 扩展常规设置：真实扩展界面：复制、粘贴与自动检测等设置。</span><a href="/fenghuashao-portfolio-pages/media/projects/easycv/04-settings.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 补充 / 扩展常规设置：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/easycv/05-site-exclusions.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 补充 / 扩展站点排除，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/easycv/05-site-exclusions.webp" alt="EasyCV · 补充 / 扩展站点排除" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-4"><span>补充 / 扩展站点排除：真实扩展界面；列表是项目自带默认项。</span><a href="/fenghuashao-portfolio-pages/media/projects/easycv/05-site-exclusions.png" target="_blank" rel="noopener noreferrer" aria-label="EasyCV · 补充 / 扩展站点排除：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure></div></section> </section> <div class="prose"> <h2 id="为谁解决什么问题">为谁解决什么问题</h2>
+<p>面向需要从网页摘录文字、整理资料的用户。一些页面通过样式或事件处理阻止文字选择、复制与粘贴。EasyCV 以浏览器扩展的形式处理这些限制，并提供设置与站点排除来控制作用范围。</p>
+<h2 id="核心使用流程">核心使用流程</h2>
+<ol>
+<li>加载扩展，按需要设置复制、粘贴与自动检测选项。</li>
+<li>在目标页面选择文字，执行复制并粘贴到输入框。</li>
+<li>对不希望干预的页面配置站点排除。</li>
+</ol>
+<p>本页重点展示可观察的前后差异：在同一张自建限制页面上，不加载扩展时选区与结果为空；加载真实扩展后，两句示例文字被完整复制并粘贴。</p>
+<h2 id="我的贡献与技术决策">我的贡献与技术决策</h2>
+<p>我负责扩展功能、设置与作用范围管理，并维护配套文档和验证流程。</p>
+<ul>
+<li><strong>Manifest V3 扩展结构</strong>：内容脚本处理页面限制，后台 service worker 协调扩展状态，设置页集中管理选项。</li>
+<li><strong>样式与事件两层处理</strong>：解除文字选择样式限制，同时处理复制、粘贴等事件限制，让复制与粘贴操作真正完成。</li>
+<li><strong>允许配置作用范围</strong>：提供复制 / 粘贴开关和站点排除；排除机制是产品的一部分。</li>
+</ul>
+<h2 id="当前状态与验证范围">当前状态与验证范围</h2>
+<p>展示素材锁定 GitHub 版本 <code>1.1.1</code> / <code>bbd6300</code>，采集于 2026-11-03。它不代表其他版本的发布验收结果。</p>
+<p><strong>已验证</strong>：macOS Chrome for Testing 下，用两个隔离会话在自建限制页面执行真实鼠标拖选和复制 / 粘贴快捷键；启用扩展后的粘贴文本与选区一致。</p>
+<p><strong>未覆盖</strong>：所有网站兼容性、Windows / Edge、商店上架与 1.1.2 发布验收。素材采集还观察到弹窗状态提示与实际解锁结果不一致，问题尚未定位；本页没有把该弹窗作为展示图，也没有据此宣称缺陷已修复。</p> </div>   </div> <aside class="meta-panel"> <div class="meta-box"> <b>技术栈</b> <ul><li>JavaScript</li><li>Chrome Extension</li><li>Manifest V3</li></ul> </div> <div class="meta-box"> <b>我的角色</b> <ul><li>扩展功能与设置界面</li><li>站点作用范围管理</li><li>文档与验证流程</li></ul> </div> <div class="meta-box"> <b>状态</b> <ul> <li>版本快照 · v1.1.1 · 自建页面实测</li> <li>内容核对 2026/11/03</li> </ul> </div> <div class="meta-box"> <b>入口</b> <ul> <li><a href="https://github.com/fenghuashao/EasyCV" target="_blank" rel="noopener noreferrer">源码仓库 ↗</a></li> <li><a href="#demo">本页操作短片与截图 ↓</a></li>  </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"作品","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/"},{"@type":"ListItem","position":2,"name":"EasyCV","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/easycv/"}]}</script> </body> </html>

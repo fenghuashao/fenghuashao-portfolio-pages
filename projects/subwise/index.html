@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subwise · fenghuashao</title><meta name="description" content="集中记录订阅套餐、费用与续费日期，用总览、日历和支出分析看清订阅安排；本页使用示例数据。"><link rel="canonical" href="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/subwise/"><meta name="generator" content="Astro v5.18.2"><meta property="og:type" content="website"><meta property="og:title" content="Subwise · fenghuashao"><meta property="og:description" content="集中记录订阅套餐、费用与续费日期，用总览、日历和支出分析看清订阅安排；本页使用示例数据。"><meta property="og:url" content="https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/subwise/"><meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)"><link rel="icon" href="/fenghuashao-portfolio-pages/favicon.svg" type="image/svg+xml"><script>
+      // 防闪烁：渲染前恢复主题（默认深色；首次访问跟随系统偏好的反色策略见 ADR——本站深色为品牌默认）
+      (function () {
+        try {
+          var t = localStorage.getItem('portfolio-theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><link rel="stylesheet" href="/fenghuashao-portfolio-pages/_astro/about.CjgBJSNM.css"></head> <body> <a class="skip-link" href="#main">跳到主内容</a> <header class="topbar"> <div class="wrap nav"> <a class="logo" href="/fenghuashao-portfolio-pages/"><span class="dot" aria-hidden="true"></span>fenghuashao</a> <button id="menuBtn" class="pill-btn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button> <nav id="navLinks" class="nav-links" aria-label="主导航"> <a href="/fenghuashao-portfolio-pages/">首页</a><a href="/fenghuashao-portfolio-pages/projects/" aria-current="page">作品</a><a href="/fenghuashao-portfolio-pages/engineering/">工程案例</a><a href="/fenghuashao-portfolio-pages/about/">关于</a> <a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub ↗</a> </nav> <button id="themeBtn" class="pill-btn" aria-label="切换亮暗模式">◐</button> </div> </header> <script>
+  (function () {
+    var d = document;
+    var btn = d.getElementById('themeBtn');
+    var menuBtn = d.getElementById('menuBtn');
+    var links = d.getElementById('navLinks');
+    function applyTheme(t) {
+      d.documentElement.setAttribute('data-theme', t);
+      if (btn) btn.setAttribute('aria-label', t === 'dark' ? '切换到亮色模式' : '切换到暗色模式');
+    }
+    if (btn) btn.addEventListener('click', function () {
+      var next = d.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('portfolio-theme', next); } catch (e) {}
+      applyTheme(next);
+    });
+    if (menuBtn && links) {
+      menuBtn.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      });
+    }
+  })();
+</script> <main id="main" class="wrap">  <p class="crumb"><a href="/fenghuashao-portfolio-pages/projects/">作品</a> / Subwise</p> <section class="detail-hero real-cover"> <a href="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise封面，查看完整原图（新窗口）"> <img src="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.webp" alt="Subwise 真实订阅总览，页面中的价格与订阅均为示例数据" fetchpriority="high"> <span class="cover-link-label">查看封面原图 ↗</span> </a>  </section> <section class="detail-head"> <div class="badge-stack"> <div class="badge-stack"> <span class="badge snapshot">版本快照 · v1.1.0 · 本地 Web 演示</span>  </div> <span class="chip">2026</span> </div> <h1>Subwise<span style="color:var(--ink-3);font-weight:600"> · 个人订阅管理工作台</span></h1> <p class="sum">集中记录订阅套餐、费用与续费日期，用总览、日历和支出分析看清订阅安排；本页使用示例数据。</p> <p class="media-note">订阅、金额、余额和额度均为示例数据；本次未连接或验证真实账户同步。 <a href="#demo">观看短片与截图 ↓</a></p> </section> <div class="detail-cols"> <div> <section id="demo" class="project-demo" aria-labelledby="demo-heading"> <div class="section-head"><h2 id="demo-heading">实际操作与界面</h2></div> <section aria-label="界面与演示"><div class="gallery"><figure class="gallery-video"><video controls playsinline preload="none" poster="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.webp" width="1440" height="1000" aria-label="Subwise 无声实际操作短片" aria-describedby="media-caption-0"><source src="/fenghuashao-portfolio-pages/media/projects/subwise/workflow.mp4" type="video/mp4">
+浏览器不支持内嵌视频，请使用下方的 MP4 链接。
+</video><figcaption id="media-caption-0"><span>25.2 秒 · 无声操作录屏：录入虚构套餐并保存 → 续费日历 → 演示额度 → 支出分析 → 总览。所有订阅、金额、余额与额度均为示例数据，未验证真实账户同步。</span><a href="/fenghuashao-portfolio-pages/media/projects/subwise/workflow.mp4" target="_blank" rel="noopener noreferrer">单独打开短片 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 订阅总览，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.webp" alt="Subwise · 订阅总览" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-1"><span>订阅总览：项目内置示例数据，不是真实账单或当前报价。</span><a href="/fenghuashao-portfolio-pages/media/projects/subwise/01-overview.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 订阅总览：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/subwise/02-subscription-editor.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 添加订阅，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/subwise/02-subscription-editor.webp" alt="Subwise · 添加订阅" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-2"><span>添加订阅：实际表单录入虚构套餐。</span><a href="/fenghuashao-portfolio-pages/media/projects/subwise/02-subscription-editor.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 添加订阅：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/subwise/03-renewal-calendar.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 续费日历，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/subwise/03-renewal-calendar.webp" alt="Subwise · 续费日历" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-3"><span>续费日历：按日期查看示例订阅的续费安排。</span><a href="/fenghuashao-portfolio-pages/media/projects/subwise/03-renewal-calendar.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 续费日历：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure><figure><a class="original-image" href="/fenghuashao-portfolio-pages/media/projects/subwise/05-spending-analysis.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 支出分析，查看完整原图（新窗口）"><img src="/fenghuashao-portfolio-pages/media/projects/subwise/05-spending-analysis.webp" alt="Subwise · 支出分析" width="1440" height="1000" loading="lazy" decoding="async"></a><figcaption id="media-caption-4"><span>支出分析：按示例订阅费用生成月度与年度图表。</span><a href="/fenghuashao-portfolio-pages/media/projects/subwise/05-spending-analysis.png" target="_blank" rel="noopener noreferrer" aria-label="Subwise · 支出分析：查看完整原图（新窗口）">查看完整原图 ↗</a></figcaption></figure></div></section> </section> <div class="prose"> <h2 id="为谁解决什么问题">为谁解决什么问题</h2>
+<p>面向同时使用多个 AI 平台或订阅服务的个人用户。套餐周期、续费日期和费用分散时，很难一眼看清接下来的支出。Subwise 将这些信息集中到一个本地工作台，用总览、日历和分析视图辅助整理。</p>
+<h2 id="核心使用流程">核心使用流程</h2>
+<ol>
+<li>录入平台、套餐、金额、付费周期与续费日期。</li>
+<li>保存订阅，在总览与续费日历中查看安排。</li>
+<li>查看按已录入费用生成的支出分析，并区分额度页的数据来源。</li>
+</ol>
+<p>素材采集时实际新增了“演示平台 / 作品展示示例套餐”，保存后刷新仍能恢复。这是一条本地录入与持久化的实测结果，不是账户自动同步的验证。</p>
+<h2 id="我的贡献与技术决策">我的贡献与技术决策</h2>
+<p>我的工作集中在订阅录入、视图组织、本地持久化，以及用量信息的数据来源表达。</p>
+<ul>
+<li><strong>本地优先</strong>：订阅记录保存在浏览器 <code>localStorage</code> 中，无需注册账户即可开始整理。记录依赖当前浏览器的本地存储，并不意味着已经具备跨设备同步。</li>
+<li><strong>原生 Web + Node.js</strong>：前端使用 HTML、CSS、JavaScript；Node 服务提供静态资源与接口代理，保持本地运行流程简单。</li>
+<li><strong>区分记录与同步数据</strong>：额度页面保留演示快照等来源标识。源码提供平台接口连接能力，但本页只展示示例流程，不把它写成已经验证的真实账户同步。</li>
+</ul>
+<h2 id="当前状态与验证范围">当前状态与验证范围</h2>
+<p>本页展示 <code>v1.1.0</code> / <code>3a2f31b</code> 的本地 Web 版本，素材采集于 2026-11-03。</p>
+<p><strong>已验证</strong>：使用真实表单新增虚构订阅，保存后刷新恢复；总览、续费日历、额度与支出分析页面已实际打开并录制。</p>
+<p><strong>未验证</strong>：真实账户同步、真实账单准确性与移动端交付。画面中的订阅、金额、余额、额度全部为示例数据，不是个人财务信息，也不代表平台当前价格。</p> </div>   </div> <aside class="meta-panel"> <div class="meta-box"> <b>技术栈</b> <ul><li>JavaScript</li><li>HTML / CSS</li><li>Node.js</li><li>localStorage</li></ul> </div> <div class="meta-box"> <b>我的角色</b> <ul><li>订阅管理与视图实现</li><li>本地数据持久化</li><li>用量数据来源区分</li></ul> </div> <div class="meta-box"> <b>状态</b> <ul> <li>版本快照 · v1.1.0 · 本地 Web 演示</li> <li>内容核对 2026/11/03</li> </ul> </div> <div class="meta-box"> <b>入口</b> <ul> <li><a href="https://github.com/fenghuashao/subwise" target="_blank" rel="noopener noreferrer">源码仓库 ↗</a></li> <li><a href="#demo">本页操作短片与截图 ↓</a></li>  </ul> </div> </aside> </div>  </main> <footer class="site"> <div class="wrap">
+© 2026 fenghuashao · 作品为主体，工程案例证明能力 ·
+<a href="https://github.com/fenghuashao" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+    精选作品附真实截图与操作短片 · 演示范围见各项目说明
+</div> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"作品","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/"},{"@type":"ListItem","position":2,"name":"Subwise","item":"https://fenghuashao.github.io/fenghuashao-portfolio-pages/projects/subwise/"}]}</script> </body> </html>
